@@ -1,21 +1,25 @@
-
 library(dplyr)
 library(leaflet)
+library(shiny)
+library(ggthemes)
 library(ggplot2)
-install.packages("plotly")
-#library(plotly)
-
-Citi_Bike_717_most_start = Citi_Bike_717 %>% 
-  group_by(., start.station.name) %>% 
-  summarise(., Anzahl = n()) %>%
-  arrange(., desc(Anzahl)) %>%
-  top_n(., 10)
+library(RColorBrewer)
+library(plotly)
+library(rsconnect)
+library(shinydashboard)
 
 
 
 
+Citi_Bike_717 = readRDS('citibike717.RDS')
+OOO = readRDS("StartStation.RDS")
+CCC = readRDS("EndStation.RDS")
+routes = readRDS("routes.RDS")
+routes_map = readRDS("routes_map.RDS")
 
 
+# MAPBOX_TOKEN = "pk.eyJ1IjoibWFuZ29saW5hIiwiYSI6ImNqY3o1dDhiczBvdXYyd24yaXBuMm0wcTQifQ.CuPZPh3sZfw3_Y6gV6ekPg"
+# Sys.setenv('MAPBOX_TOKEN' = 'pk.eyJ1IjoibWFuZ29saW5hIiwiYSI6ImNqY3o1dDhiczBvdXYyd24yaXBuMm0wcTQifQ.CuPZPh3sZfw3_Y6gV6ekPg')
 
 
 # convert matrix to dataframe
